@@ -24,7 +24,9 @@ ctx.lineWidth = 2.5;
 let painting = false;
 let filling = false;
 let tempImage=null;
-
+let bkcolor="white";
+let isEraser=false;
+let curLineWidth=2.5;
 /*
  */
 let cPushArray = new Array();
@@ -91,14 +93,30 @@ function onMouseMove(event) {
 
 
 function handleColorClick(event) {
-    const color = event.target.style.backgroundColor;
-    ctx.strokeStyle = color;
-    ctx.fillStyle = color;
+	if(event.target.id==="eraser"){
+		console.log(bkcolor);
+		ctx.strokeStyle=bkcolor;
+		isEraser=true;
+		filling = false;
+	    mode.innerText = "채우기";
+	    notify.innerText = "그리기 모드";
+	    ctx.lineWidth=curLineWidth*4;
+	}else{
+		const color = event.target.style.backgroundColor;
+		ctx.strokeStyle = color;
+		ctx.fillStyle = color;
+		isEraser=false;
+		ctx.lineWidth=curLineWidth;
+	}
 }
 
 function handleRangeChange(event) {
     const size = event.target.value;
+    curLineWidth = size;
     ctx.lineWidth = size;
+    if(isErase){
+    	ctx.lineWidth = curLineWidth*4;
+    }
 }
 
 function handleModeClick() {
@@ -114,8 +132,10 @@ function handleModeClick() {
 }
 
 function handleCanvasClick() {
-    if (filling)
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
+    if (filling){
+    	ctx.fillRect(0, 0, canvas.width, canvas.height);
+    	bkcolor=ctx.fillStyle;
+    }
 }
 
 function handleCM(event) {
@@ -137,7 +157,6 @@ function handleEraseClick(event) {
 	ctx.fillRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
 	ctx.strokeStyle = INITIAL_COLOR;
 	ctx.fillStyle = INITIAL_COLOR;
-	ctx.lineWidth = 2.5;
 	filling = false;
     mode.innerText = "채우기";
     notify.innerText = "그리기 모드";

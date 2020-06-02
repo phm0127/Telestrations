@@ -35,6 +35,7 @@
             <div class="controls_color jsColor" style="background-color: #5ac8fa "></div>
             <div class="controls_color jsColor" style="background-color: #0579ff "></div>
             <div class="controls_color jsColor" style="background-color: #5856d6 "></div>
+            <div class="controls_color jsColor" style="background-color: #f3f6f0; margin : auto 10px;"><img id="eraser" src="/img/eraser.png" style="width: 50px; height: 50px;" alt="지우개"></div>
             
         </div>
     </div>
