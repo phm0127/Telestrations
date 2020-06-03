@@ -144,12 +144,37 @@ function handleCM(event) {
 
 //Paint[🎨]
 function handleSaveClick(event) {
-    const image = canvas.toDataURL("image/png");
-    const link = document.createElement("a");
-    link.href = image;
-    
-    link.click();
-    console.log(link);
+	let imgDataUrl = canvas.toDataURL('image/png');
+    let blobBin = atob(imgDataUrl.split(',')[1]);	// base64 데이터 디코딩
+    let array = [];
+    for (let i = 0; i < blobBin.length; i++) {
+        array.push(blobBin.charCodeAt(i));
+    }
+    let file = new Blob([new Uint8Array(array)], {type: 'image/png'});	// Blob 생성
+	let formData = new FormData();
+	formData.append('file',file);
+	$.ajax({
+		type : 'post',
+        url : '/upload',
+        data : formData,
+        processData : false,	// data 파라미터 강제 string 변환 방지!!
+        contentType : false,	// application/x-www-form-urlencoded; 방지!!
+        success: function (data) {
+        	alert("complete");
+        	location.href = "/watch";
+        },
+        error: function (e) {
+            console.log("ERROR : ", e);
+            alert("fail");
+        }
+    });
+	
+//    const image = canvas.toDataURL("image/png");
+//    const link = document.createElement("a");
+//    link.href = image;
+//    
+//    link.click();
+//    console.log(link);
     
 }
 function handleEraseClick(event) {
