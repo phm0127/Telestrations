@@ -94,7 +94,7 @@ function onMouseMove(event) {
 
 function handleColorClick(event) {
 	if(event.target.id==="eraser"){
-		console.log(bkcolor);
+		
 		ctx.strokeStyle=bkcolor;
 		isEraser=true;
 		filling = false;
@@ -160,6 +160,7 @@ function handleEraseClick(event) {
 	filling = false;
     mode.innerText = "채우기";
     notify.innerText = "그리기 모드";
+    bkcolor="white";
     canvasPush();
 	
 }
