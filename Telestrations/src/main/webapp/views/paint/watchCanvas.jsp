@@ -21,22 +21,26 @@
     <!-- 
 	
 	 -->
-		<button class="button">
-	    <span class="default">Send</span>
-	    <span class="success">
-	        <svg viewBox="0 0 16 16">
-	            <polyline points="3.75 9 7 12 13 5"></polyline>
-	        </svg>Sent
-	    </span>
-	    <svg class="trails" viewBox="0 0 33 64">
-	        <path d="M26,4 C28,13.3333333 29,22.6666667 29,32 C29,41.3333333 28,50.6666667 26,60"></path>
-	        <path d="M6,4 C8,13.3333333 9,22.6666667 9,32 C9,41.3333333 8,50.6666667 6,60"></path>
-	    </svg>
-	    <div class="plane">
-	        <div class="left"></div>
-	        <div class="right"></div>
-	    </div>
-	</button>
+	 	
+	 	<p class ="stag" id="note" style="margin : 20px;">그림을 보고 정답을 맞춰보세요</p>
+	 	<input type="text" class ="stag" id="answer" style="margin-bottom : 20px;" value="">
+			<button class="button">
+			    <span class="default">Send</span>
+			    <span class="success">
+			        <svg viewBox="0 0 16 16">
+			            <polyline points="3.75 9 7 12 13 5"></polyline>
+			        </svg>Sent
+			    </span>
+			    <svg class="trails" viewBox="0 0 33 64">
+			        <path d="M26,4 C28,13.3333333 29,22.6666667 29,32 C29,41.3333333 28,50.6666667 26,60"></path>
+			        <path d="M6,4 C8,13.3333333 9,22.6666667 9,32 C9,41.3333333 8,50.6666667 6,60"></path>
+			    </svg>
+			    <div class="plane">
+			        <div class="left"></div>
+			        <div class="right"></div>
+			    </div>
+			</button>
+	
 
 
 <!-- twitter / dribbble -->

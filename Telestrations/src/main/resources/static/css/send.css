@@ -1,5 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Inter:400,500,600,700&amp;display=swap');
-
+.stag{
+  line-height: 24px;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 14px;
+  background: none;
+  outline: none;
+  color: var(--text);
+}
 .button {
   --primary: #F6F8FF;
   --primary-dark: #D1D6EE;

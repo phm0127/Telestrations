@@ -1,9 +1,12 @@
+let answer = document.getElementById('answer');
+let note = document.getElementById('note');
+
 document.querySelectorAll('.button').forEach(button => {
 
     let getVar = variable => getComputedStyle(button).getPropertyValue(variable);
 
     button.addEventListener('click', e => {
-
+    	note.innerText="정답 전송중!";
         if(!button.classList.contains('active')) {
 
             button.classList.add('active');
@@ -65,6 +68,7 @@ document.querySelectorAll('.button').forEach(button => {
                     onComplete() {
                         setTimeout(() => {
                             button.removeAttribute('style');
+                            
                             gsap.fromTo(button, {
                                 opacity: 0,
                                 y: -8
@@ -75,12 +79,30 @@ document.querySelectorAll('.button').forEach(button => {
                                 duration: .3,
                                 onComplete() {
                                     button.classList.remove('active');
-                                    console.log("finish");
+                                    $.ajax({
+                                        url: "sendanswer",
+                                        type: "POST",
+                                        data: {
+                                        	
+                                        	answer : answer.value
+                                        },
+                                        success: function(data){
+                                        	button.style.display='none';
+                                        	answer.style.display='none';
+                                        	note.innerText="전송 성공! 다른 플레이어가 정답을 제출할 때 까지 잠시 기다려주세요!";
+                                        	
+                                        },
+                                        error: function(){
+                                        	note.innerText="오류가 생겼습니다. 다시 시도 해주세요.";
+                                            
+                                        }
+                                    });
                                 }
                             })
                         }, 1800)
                     }
                 }]
+            	
             })
 
             gsap.to(button, {

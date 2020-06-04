@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 @Controller
@@ -29,6 +30,22 @@ public class TestController {
 	private String home(){		
 
 		return "/home/home";
+	}
+	@RequestMapping(value = "/time", method = RequestMethod.GET)
+	private String pulse(){		
+		
+		return "/home/time";
+	}
+	@RequestMapping(value = "/loading", method = RequestMethod.GET)
+	private String loading(){		
+
+		return "/home/loading";
+	}
+	@RequestMapping(value = "/sendanswer", method = RequestMethod.POST)
+	@ResponseBody
+	private String sendAnswer(@RequestParam String answer){		
+		System.out.println("정답 도착 : "+answer);
+		return null;
 	}
 
 	@RequestMapping(value = "/upload", method = RequestMethod.POST)
