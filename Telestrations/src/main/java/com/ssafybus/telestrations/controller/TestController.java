@@ -25,6 +25,11 @@ public class TestController {
 
 		return "/paint/canvas";
 	}
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	private String home(){		
+
+		return "/home/home";
+	}
 
 	@RequestMapping(value = "/upload", method = RequestMethod.POST)
 	private String upload(@RequestParam(value="file", required=true) MultipartFile [] file,HttpServletRequest request) throws IOException{
