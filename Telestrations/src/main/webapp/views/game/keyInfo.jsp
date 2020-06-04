@@ -29,7 +29,6 @@
 				$("#btn_keyword").val("정답 안보기");
 			} else {
 				$("#div_keyword").hide();
-				$("#btn_keyword").val("정답 보기");
 			}
 			
 			
